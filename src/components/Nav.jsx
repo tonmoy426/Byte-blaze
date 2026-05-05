@@ -1,9 +1,11 @@
-import React, { } from 'react';
+import React, { useEffect } from 'react';
 
 const Nav = () => {
     const [theme, setTheme] = React.useState('light')
-    React.useEffect(() => {
-        document.querySelector('html').setAttribute('data-theme', theme)
+    useEffect(() => {
+        localStorage.setItem('theme', theme)
+        const localTheme = localStorage.getItem('theme')
+        document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
     const handleToggle = (e) => {
         if (e.target.checked) {
